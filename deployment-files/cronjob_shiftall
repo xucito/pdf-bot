@@ -1,2 +1,2 @@
-* * * * * node $(npm bin -g)/pdf-bot -c ./pdf-bot.config.js shift:all >> /var/log/pdfbot.log 2>&1
-* * * * * node $(npm bin -g)/pdf-bot -c ./pdf-bot.config.js ping:retry-failed >> /var/log/pdfbot.log 2>&1
+* * * * *  cd /app ; node $(npm bin -g)/pdf-bot -c /pdf-bot.config.js shift:all >> /var/log/pdfbot.log 2>&1
+* * * * *  cd /app ; node $(npm bin -g)/pdf-bot -c /pdf-bot.config.js ping:retry-failed >> /var/log/pdfbot.log 2>&1

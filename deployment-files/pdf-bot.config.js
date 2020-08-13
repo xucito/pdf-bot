@@ -8,20 +8,30 @@ module.exports = {
   },
   db: LowDB({
     lowDbOptions: {},
-    path: 'pdf-storage/db/db'
+    //path: 'pdfbot/db'
   }),
-  storagePath: "pdf-storage",
+  //storagePath: "pdfbot",
+  queue: {
+    webhookMaxTries: 0
+  },
   webhook: {
     secret: '1234',
-    url: 'http://10.0.75.1:5000/api/internals/webhooks/pdf'
+    url: 'https://api.e1c.etisalatdigital.ae/api/internals/webhooks/pdf'
   },
   generator: {
     // Triggers that specify when the PDF should be generated
-    completionTrigger: new htmlPdf.CompletionTrigger.Timer(1000), // waits for 1 sec
+    completionTrigger: new htmlPdf.CompletionTrigger.Variable(
+      'reportLoaded', // optional, name of the variable to wait for.  Defaults to 'htmlPdfDone'
+      300000 // optional, timeout (milliseconds)
+    ),
     // The port to listen for Chrome (default: 9222)
     port: 9222,
     printOptions: {
-        printBackground: true
+        printBackground: true,
+       	marginTop: 0,
+        marginBottom: 0,
+        marginLeft: 0,
+        marginRight: 0
     }
   }
 }
